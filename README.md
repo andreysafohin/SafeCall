@@ -9,15 +9,22 @@ SafeCall/
 ├── app/
 │   ├── demo/
 │   │   └── page.tsx          # Interactive demo page with call analysis
+│   ├── mobile-demo/
+│   │   └── page.tsx          # Mobile phone prototype simulation
 │   ├── pricing/
 │   │   └── page.tsx          # Pricing details page
 │   ├── globals.css           # Global styles and Tailwind directives
 │   ├── layout.tsx            # Root layout with navigation and footer
 │   └── page.tsx              # Landing page with all sections
 ├── components/
-│   └── Navigation.tsx        # Top navigation component
+│   ├── Navigation.tsx        # Top navigation component
+│   ├── PhoneSimulator.tsx    # Mobile phone mockup component
+│   └── CallControlPanel.tsx  # Call simulation controls
+├── data/
+│   └── scenarios.ts          # Predefined call scenarios
 ├── utils/
-│   └── riskAnalysis.ts       # Risk analysis logic (demo implementation)
+│   ├── riskAnalysis.ts       # Risk analysis logic (demo implementation)
+│   └── scamDetection.ts      # Scam detection utilities
 ├── package.json
 ├── tsconfig.json
 ├── tailwind.config.js
@@ -61,7 +68,14 @@ SafeCall/
 - **Team Section**: Displays all four team members
 - **Footer**: Disclaimer about student project
 
-### Demo Page (`/demo`)
+### Mobile Demo (`/mobile-demo`)
+- Interactive mobile phone mockup with call simulation
+- Real-time transcript playback
+- Scam detection with risk scoring
+- Warning overlay with device vibration
+- Scenario selection (normal call, bank scam, tax scam)
+
+### Text Demo (`/demo`)
 - Interactive text input for call transcripts
 - Example scripts (Bank Scam, Government Scam, Legitimate Call)
 - Real-time risk analysis with:
@@ -81,7 +95,7 @@ SafeCall/
 
 ### Risk Analysis Logic
 
-The risk analysis (`utils/riskAnalysis.ts`) is a **simplified demo implementation** that:
+The risk analysis (`utils/riskAnalysis.ts` and `utils/scamDetection.ts`) is a **simplified demo implementation** that:
 - Analyzes text input for common scam trigger words
 - Detects urgency patterns, pressure tactics, and suspicious requests
 - Assigns risk levels based on detected patterns
@@ -122,4 +136,3 @@ npm start
 - Safokhin Andrei – Pricing model, financial planning
 - Medina García Carlos – Customer personas, work packages, time plan
 - Pitic Emanuel – Technical solution description, team structure
-
