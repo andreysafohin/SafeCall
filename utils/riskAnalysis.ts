@@ -150,7 +150,7 @@ export function analyzeCallRisk(text: string): RiskAnalysisResult {
     riskLevel,
     score: normalizedScore,
     feedback,
-    detectedPatterns: [...new Set(detectedPatterns)], // Remove duplicates
+    detectedPatterns: Array.from(new Set(detectedPatterns)), // Remove duplicates
   }
 }
 
