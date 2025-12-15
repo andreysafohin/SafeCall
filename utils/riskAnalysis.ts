@@ -146,11 +146,21 @@ export function analyzeCallRisk(text: string): RiskAnalysisResult {
     feedback = `✓ LOW RISK: This call appears relatively safe, but always remain cautious. Remember: legitimate organizations will never pressure you to act immediately or ask for sensitive information over the phone.`
   }
 
+  // Remove duplicates manually for maximum compatibility (using object instead of Set)
+  const uniquePatterns: string[] = []
+  const seen: { [key: string]: boolean } = {}
+  for (const pattern of detectedPatterns) {
+    if (!seen[pattern]) {
+      seen[pattern] = true
+      uniquePatterns.push(pattern)
+    }
+  }
+
   return {
     riskLevel,
     score: normalizedScore,
     feedback,
-    detectedPatterns: Array.from(new Set(detectedPatterns)), // Remove duplicates
+    detectedPatterns: uniquePatterns,
   }
 }
 
